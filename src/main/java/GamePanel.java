@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.image.BufferStrategy;
 
 public class GamePanel extends JPanel implements Runnable {
+    private static final double FPS = 60.0;
 
     // Screen Config
 
@@ -41,15 +42,27 @@ public class GamePanel extends JPanel implements Runnable {
     @Override
     public void run() {
         // Game loop
+        double drawInterval = 1000000000/FPS;
+        double delta = 0;
+        long lastTime = System.nanoTime();
+        long currentTime;
+
         while(gameThread != null) {
 
-            long currentTime = System.nanoTime();
+             currentTime = System.nanoTime();
 
+             delta += (currentTime - lastTime)/drawInterval;
+             lastTime = currentTime;
 
-            // 1 Update info such as character positions
-            update();
-            // 2 Draw the screen with updated info
-            repaint();
+             if(delta >= 1) {
+                 // 1 Update info such as character positions
+                 update();
+                 // 2 Draw the screen with updated info
+                 repaint();
+                 // reset delta for next run
+                 delta--;
+             }
+
         }
 
     }
