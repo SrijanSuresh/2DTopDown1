@@ -16,13 +16,21 @@ public class GamePanel extends JPanel implements Runnable {
     final int screenWidth = tileSize * maxScreenCol; // 768 pixels
     final int screenHeight = tileSize * maxScreenRow; // 576 pixels
 
+    KeyHandler keyHandler = new KeyHandler();
     Thread gameThread;
+
+    // Set player's default position
+    int playerX = 100;
+    int playerY = 100;
+    int playerSpeed = 100;
 
     public GamePanel() {
 
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
+        this.addKeyListener(keyHandler);
+        this.setFocusable(true); // game panel can be focused to receive key input
     }
 
     public void startGame() {
@@ -35,7 +43,8 @@ public class GamePanel extends JPanel implements Runnable {
         // Game loop
         while(gameThread != null) {
 
-            //System.out.println("Game thread started");
+            long currentTime = System.nanoTime();
+
 
             // 1 Update info such as character positions
             update();
@@ -50,10 +59,24 @@ public class GamePanel extends JPanel implements Runnable {
         Graphics2D g2d = (Graphics2D) g;
 
         g2d.setColor(Color.white);
-        g2d.fillRect(100, 100, tileSize, tileSize);
+        g2d.fillRect(playerX, playerY, tileSize, tileSize);
         g2d.dispose();
     }
     public void update() {
+
+        if(keyHandler.upPressed == true){
+            playerY -= playerSpeed;
+        }
+        else if(keyHandler.downPressed == true){
+            playerY += playerSpeed;
+        }
+        else if(keyHandler.leftPressed == true){
+            playerX -= playerSpeed;
+        }
+        else if(keyHandler.rightPressed == true){
+            playerX += playerSpeed;
+        }
+
     }
 
 }
