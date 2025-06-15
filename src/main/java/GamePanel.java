@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.image.BufferStrategy;
 
 public class GamePanel extends JPanel implements Runnable {
-    private static final double FPS = 60.0;
+    private static final int FPS = 60;
 
     // Screen Config
 
@@ -46,12 +46,15 @@ public class GamePanel extends JPanel implements Runnable {
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
+        long timer = 0;
+        long drawCount = 0;
 
         while(gameThread != null) {
 
              currentTime = System.nanoTime();
 
              delta += (currentTime - lastTime)/drawInterval;
+             timer += (currentTime - lastTime);
              lastTime = currentTime;
 
              if(delta >= 1) {
@@ -61,8 +64,13 @@ public class GamePanel extends JPanel implements Runnable {
                  repaint();
                  // reset delta for next run
                  delta--;
+                 drawCount++;
              }
-
+            if(timer >= 1000000000) {
+                System.out.println("FPS:"+ drawCount);
+                drawCount = 0;
+                timer = 0;
+            }
         }
 
     }
