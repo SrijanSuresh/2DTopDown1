@@ -8,3 +8,5 @@
 
 ## Step 2: Game Loops
 ![image](https://github.com/user-attachments/assets/81862dda-a8c6-401a-9b81-b96d406459f2)
+- Created a Game thread which updates and draws the the screen with character position
+- paincomponent method handles the drawing and update handles the frame update
