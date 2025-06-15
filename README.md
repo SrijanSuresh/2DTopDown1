@@ -7,3 +7,4 @@
 - Called game panel on main on a Java Frame with title, close operation and frame config
 
 ## Step 2: Game Loops
+![image](https://github.com/user-attachments/assets/81862dda-a8c6-401a-9b81-b96d406459f2)
