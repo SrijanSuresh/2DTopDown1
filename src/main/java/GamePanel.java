@@ -35,8 +35,25 @@ public class GamePanel extends JPanel implements Runnable {
         // Game loop
         while(gameThread != null) {
 
+            //System.out.println("Game thread started");
+
+            // 1 Update info such as character positions
+            update();
+            // 2 Draw the screen with updated info
+            repaint();
         }
 
+    }
+    public void paintComponent(Graphics g) {
+
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+
+        g2d.setColor(Color.white);
+        g2d.fillRect(100, 100, tileSize, tileSize);
+        g2d.dispose();
+    }
+    public void update() {
     }
 
 }
