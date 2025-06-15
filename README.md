@@ -9,4 +9,12 @@
 ## Step 2: Game Loops
 ![image](https://github.com/user-attachments/assets/81862dda-a8c6-401a-9b81-b96d406459f2)
 - Created a Game thread which updates and draws the the screen with character position
-- paincomponent method handles the drawing and update handles the frame update
+- Paincomponent method handles the drawing and update handles the frame update
+- Then we create a new class for keyInputs and update its position in update method
+- Since the change in position is updated quick due to modern CPU performance, we get the current time in nanoseconds to restrict update to 60fps
+- This can be done in 2 methods Sleep and Delta Method
+- Sleep Method is done by creating a draw interval of 1s/60 FPS
+- ![image](https://github.com/user-attachments/assets/cb39569c-63fb-4d30-85b3-b073f3f395bd)
+- I will be using Delta method as I prefer this
+- This method involves using delta which will be difference between current time and previous time over the interval
+- Update and Repaint occurs everytime delta is over 1
