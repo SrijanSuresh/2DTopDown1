@@ -1,6 +1,7 @@
+package game;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferStrategy;
 
 public class GamePanel extends JPanel implements Runnable {
     private static final int FPS = 60;
