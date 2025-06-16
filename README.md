@@ -21,7 +21,10 @@
 
 ## Step 3: Sprite and Object animation
 - Added Entity package and entity/player class, in future will add objects and npcs
-- moved update and draw functionality to player class
+- Moved update and draw functionality to player class
+- Created custom sprites using piskelapp
+- Edited Entity yo involve directions and updated draw method in Player class to perform basic sprite rendering
 
+  
 # Credits
 Special thanks to RyiSnow for their YouTube tutorial, which served as a key reference during development.
