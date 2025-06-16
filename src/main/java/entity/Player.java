@@ -62,7 +62,8 @@ public class Player extends Entity{
         }
 
         spriteCounter++;
-        if(spriteCounter > 10){
+        if(spriteCounter > 20){ //frame speed for sprite animation change
+
             if(spriteNum == 1){
                 spriteNum = 2;
             }
