@@ -1,12 +1,15 @@
 package game;
 
 import entity.Player;
+import tile.TileManager;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable {
+
     private static final int FPS = 60;
+    TileManager tileManager = new TileManager(this);
 
     // Screen Config
 
@@ -82,6 +85,8 @@ public class GamePanel extends JPanel implements Runnable {
 
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
+
+        tileManager.draw(g2d);
         player.draw(g2d);
         g2d.dispose();
     }
